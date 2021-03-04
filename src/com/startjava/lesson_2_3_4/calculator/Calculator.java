@@ -1,29 +1,39 @@
 package com.startjava.lesson_2_3_4.calculator;
 
+import static java.lang.Math.*;
+
 public class Calculator {
-    public int calculate(int number1, char signOperation, int number2) {
+    private int firstNumber;
+    private char signOperation;
+    private int secondNumber;
+
+    public Calculator(String expression) {
+        String[] mass = expression.split(" ");
+        this.firstNumber = Integer.parseInt(mass[0]);
+        this.signOperation = mass[1].charAt(0);
+        this.secondNumber = Integer.parseInt(mass[2]);
+    }
+
+    public int calculate() {
         int result = 0;
         switch (signOperation) {
             case '+':
-                result = number1 + number2;
+                result = addExact(firstNumber, secondNumber);
                 break;
             case '-':
-                result = number1 - number2;
+                result = subtractExact(firstNumber, secondNumber);
                 break;
             case '*':
-                result = number1 * number2;
+                result = multiplyExact(firstNumber, secondNumber);
                 break;
             case '/':
-                result = number1 / number2;
+                result = firstNumber / secondNumber;
                 break;
             case '%':
-                result = number1 % number2;
+                result = firstNumber % secondNumber;
                 break;
             case '^':
-                result = 1;
-                for (int i = 0; i < number2; i++) {
-                    result *= number1;
-                }
+                return (int) pow(firstNumber, secondNumber);
         }
         return result;
     }
