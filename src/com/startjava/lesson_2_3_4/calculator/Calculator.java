@@ -8,33 +8,28 @@ public class Calculator {
     private int secondNumber;
 
     public Calculator(String expression) {
-        String[] mass = expression.split(" ");
-        this.firstNumber = Integer.parseInt(mass[0]);
-        this.signOperation = mass[1].charAt(0);
-        this.secondNumber = Integer.parseInt(mass[2]);
+        String[] partsExpression = expression.split(" ");
+        this.firstNumber = Integer.parseInt(partsExpression[0]);
+        this.signOperation = partsExpression[1].charAt(0);
+        this.secondNumber = Integer.parseInt(partsExpression[2]);
     }
 
     public int calculate() {
         int result = 0;
         switch (signOperation) {
             case '+':
-                result = addExact(firstNumber, secondNumber);
-                break;
+                return addExact(firstNumber, secondNumber);
             case '-':
-                result = subtractExact(firstNumber, secondNumber);
-                break;
+                return subtractExact(firstNumber, secondNumber);
             case '*':
-                result = multiplyExact(firstNumber, secondNumber);
-                break;
+                return multiplyExact(firstNumber, secondNumber);
             case '/':
-                result = firstNumber / secondNumber;
-                break;
+                return firstNumber / secondNumber;
             case '%':
-                result = firstNumber % secondNumber;
-                break;
+                return firstNumber % secondNumber;
             case '^':
                 return (int) pow(firstNumber, secondNumber);
         }
-        return result;
+        return 0;
     }
 }
