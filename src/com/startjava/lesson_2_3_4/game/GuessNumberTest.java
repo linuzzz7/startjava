@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
     public static void main(String[] args) {
+        System.out.println("У вас 10 попыток");
         System.out.println("Игра угадайка для 2-х играков:");
         System.out.println("Введите имя игрока 1:");
         Scanner scanner = new Scanner(System.in);

@@ -1,9 +1,9 @@
 package com.startjava.lesson_2_3_4.game;
 
 public class Player {
-    // TODO: описывает игроков (один экземпляр класса соответствует одному игроку)
     private String name;
     private int number;
+    private int[] numbers = new int[10];
 
     public Player(String name) {
         this.name = name;
