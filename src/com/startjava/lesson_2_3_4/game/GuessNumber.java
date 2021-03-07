@@ -22,7 +22,7 @@ public class GuessNumber {
 
         do {
             System.out.println(currentPlayer.getName() + " введите ваше число:");
-            currentPlayer.setNumbers(scanner.nextInt());
+            currentPlayer.setEnteredNumber(scanner.nextInt());
             if (computerNumber == currentPlayer.getNumbers()) {
                 System.out.println("Игрок " + currentPlayer.getName() + " угадал число "
                         + currentPlayer.getNumbers() + " с " + (currentPlayer.getAttempts()) + " попытки");
@@ -50,10 +50,18 @@ public class GuessNumber {
     }
 
     public void gameOver() {
-        player1.allNumbers();
-        player1.fillEnteredNumbersNull();
-        player2.allNumbers();
-        player2.fillEnteredNumbersNull();
+        printPlayerNumbers(player1);
+        player1.clearEnteredNumbers();
+        printPlayerNumbers(player2);
+        player2.clearEnteredNumbers();
         counterGame = 0;
+    }
+
+    public void printPlayerNumbers(Player player) {
+        System.out.print(player.getName() + " вводил числа ");
+        for (int number : player.outputOfAllNumbers()) {
+            System.out.print(" " + number);
+        }
+        System.out.println();
     }
 }

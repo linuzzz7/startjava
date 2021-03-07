@@ -15,30 +15,25 @@ public class Player {
         return name;
     }
 
+    public void setEnteredNumber(int number) {
+        enteredNumbers[attempts] = number;
+        attempts++;
+    }
+
+    public int[] outputOfAllNumbers() {
+        return Arrays.copyOf(enteredNumbers, getAttempts());
+    }
+
+    public void clearEnteredNumbers() {
+        Arrays.fill(enteredNumbers, 0, attempts, 0);
+        attempts = 0;
+    }
+
     public int getAttempts() {
         return attempts;
     }
 
     public int getNumbers() {
         return enteredNumbers[attempts - 1];
-    }
-
-    public void setNumbers(int numbers) {
-        enteredNumbers[attempts] = numbers;
-        attempts++;
-    }
-
-    public void allNumbers() {
-        System.out.print(this.getName() + " вводил числа ");
-        int[] newArray = Arrays.copyOf(enteredNumbers, getAttempts());
-        for (int numbers : newArray) {
-            System.out.print(" " + numbers);
-        }
-        System.out.println();
-    }
-
-    public void fillEnteredNumbersNull() {
-        Arrays.fill(enteredNumbers, 0, attempts, 0);
-        attempts = 0;
     }
 }
