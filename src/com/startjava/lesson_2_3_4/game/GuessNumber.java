@@ -23,33 +23,27 @@ public class GuessNumber {
         do {
             System.out.println(currentPlayer.getName() + " введите ваше число:");
             currentPlayer.setEnteredNumber(scanner.nextInt());
-            if (computerNumber == currentPlayer.getNumbers()) {
+            if (computerNumber == currentPlayer.getNumber()) {
                 System.out.println("Игрок " + currentPlayer.getName() + " угадал число "
-                        + currentPlayer.getNumbers() + " с " + (currentPlayer.getAttempts()) + " попытки");
-                gameOver();
+                        + currentPlayer.getNumber() + " с " + (currentPlayer.getAttempt()) + " попытки");
+                endTheGame();
                 break;
-            } else if (currentPlayer.getNumbers() < computerNumber) {
-                System.out.println("Введенное вами число " + currentPlayer.getName() +
-                        " меньше того, что загадал компьютер");
-            } else if (currentPlayer.getNumbers() > computerNumber) {
-                System.out.println("Введенное вами число " + currentPlayer.getName() + " больше того, что загадал компьютер");
             }
-
-            if (currentPlayer.getAttempts() == 5) {
+            System.out.println(currentPlayer.getNumber() < computerNumber ? "Введенное вами число " + currentPlayer.getName() +
+                    " меньше того, что загадал компьютер" : "Введенное вами число " + currentPlayer.getName() + " больше того, что загадал компьютер");
+            if (currentPlayer.getAttempt() == 10) {
                 System.out.println("У " + currentPlayer.getName() + " закончились попытки");
             }
-
             counterGame++;
-            if (counterGame == 10) {
-                gameOver();
+            if (counterGame == 20) {
+                endTheGame();
                 break;
             }
             currentPlayer = currentPlayer == player1 ? player2 : player1;
-
         } while (true);
     }
 
-    public void gameOver() {
+    public void endTheGame() {
         printPlayerNumbers(player1);
         player1.clearEnteredNumbers();
         printPlayerNumbers(player2);
@@ -59,7 +53,7 @@ public class GuessNumber {
 
     public void printPlayerNumbers(Player player) {
         System.out.print(player.getName() + " вводил числа ");
-        for (int number : player.outputOfAllNumbers()) {
+        for (int number : player.getEnteredNumbers()) {
             System.out.print(" " + number);
         }
         System.out.println();
