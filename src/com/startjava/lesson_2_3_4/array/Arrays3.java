@@ -1,6 +1,6 @@
 package com.startjava.lesson_2_3_4.array;
 
-public class Array3 {
+public class Arrays3 {
     public static void main(String[] args) {
         //TODO: Элементы массива, которые меньше среднего арифметического
         int[] array = {-6, 1, 45, 72, -45, 100, 3, -100};
